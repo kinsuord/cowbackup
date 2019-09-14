@@ -1,0 +1,23 @@
+start_folder:
+ D:/
+ 
+include:
+ - ./class/**
+ - ./old/**
+ - ./portfolio/**
+ - ./project/**
+
+exclude:
+ - "**/dataset/**"
+ - "**/datasets/**"
+ - "**/~*"
+ - "**/checkpoint/**"
+ - "**.pickle"
+ - "**.pt"
+ - "**/.*/**"
+ - "**/node_modules/**"
+ - "**/__pycache__/**"
+ - "**/env/**"
+
+target:
+ E:/backup
