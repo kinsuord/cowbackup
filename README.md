@@ -1,42 +1,48 @@
-# Cobackpy
+# Cowbackup
 
 ## description
-Cobackpy is a backup tool using python.
+Cowbackup is a backup tool using python.
 
 ## Usage
-settting in setting.yaml
+settting in .yaml file
 
 ```yaml
-start_folder:
- D:/
- 
-include:
- - ./class/**
- - ./old/**
- - ./portfolio/**
- - ./project/**
+filters:
+  - name: force_backup
+    must_include:
+      - "**/backup/**"
+  - name: document
+    include:
+      - "**.docx"
+      - "**.doc"
+      - "**.pdf"
+  - name: zip_file
+    include:
+      - "**.zip"
+      - "**.7z"
 
-exclude:
- - "**/dataset/**"
- - "**/datasets/**"
- - "**/~*"
- - "**/checkpoint/**"
- - "**.pickle"
- - "**.pt"
- - "**/.*/**"
- - "**/node_modules/**"
- - "**/__pycache__/**"
+tasks:
 
-target:
- E:/backup
+  - name: project
+    source: "D:/project"
+    target: "E:/cowbackup/project"
+    filter:
+      pre_defined:
+        - document
+        - zip_file
+        - force_backup
+      include:
+        - "**.md"
+        - "**/.git/**"
+      exclude:
+        - "**/readme.md"
 ```
-About the rule of include and exclude files. Please see [fnmatch](https://docs.python.org/zh-tw/3/library/fnmatch.html)
+About the rule of filter the files. Please see [fnmatch](https://docs.python.org/zh-tw/3/library/fnmatch.html)
 
-And it will generate .log on same directory
 
 ## TODO
 
 - [ ] using [win32](https://pypi.org/project/pywin32/) to automatically set up to task scheduler
 - [ ] GUI
-- [ ] walk file more efficiently [scandir](https://github.com/benhoyt/scandir)
-- [ ] Do not walk file while directory in exclude list
+- [ ] Unexpect input handler
+- [ ] Delete the folder when deleting the files

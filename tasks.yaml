@@ -1,0 +1,68 @@
+filters:
+  - name: force_backup
+    must_include:
+      - "**/backup/**"
+  - name: document
+    include:
+      - "**.docx"
+      - "**.doc"
+      - "**.pdf"
+  - name: zip_file
+    include:
+      - "**.zip"
+      - "**.7z"
+
+tasks:
+
+  - name: project
+    source: "D:/project"
+    target: "E:/cowbackup/project"
+    filter:
+      pre_defined:
+        - document
+        - zip_file
+        - force_backup
+      include:
+        - "**.md"
+        - "**/.git/**"
+      exclude:
+        - "**/readme.md"
+
+  # - name: record
+  #   source: "D:/old"
+  #   target: "E:/cowbackpy/record"
+  #   smart_zip: Yes
+  #   include: 
+  #     - "**.jpg"
+  #     - "**.doc"
+  #     - "**.docx"
+  #     - "**.pdf"
+  #     - "**.ptt"
+  #     - "**.pptx"
+  #     - "**.zip"
+  
+  # - name: project
+  #   source: "D:/project"
+  #   target: "E:/cowbackpy/project"
+  #   smart_zip: Yes
+  #   fliter:
+  #     pre_defined:
+  #       - document
+  #       - zip_file
+  #     include:
+  #       - "**.md"
+  #       - "**/.git/**"
+  #     exclude:
+  #       - "**/readme.md"
+
+  # - name: class
+  #   source: "D:/class"
+  #   target: "E:/cowbackpy/class"
+  #   smart_zip: Yes
+  #   include:
+  #     - "**.zip"
+  #     - "**.7z"
+  #     - "**.pdf"
+  #     - "**.pptx"
+  #     - "**.docx"
+  #     - "**/.git/**"
