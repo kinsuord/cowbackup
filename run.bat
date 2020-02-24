@@ -1,3 +1,3 @@
 call D:\tool\anaconda\Scripts\activate.bat base
-python cobackpy.py
+python cowbackup.py tasks.yaml
 conda deactivate
