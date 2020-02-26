@@ -1,3 +1,4 @@
 *.log
 tasks.yaml
 last_update.txt
+record.pkl
